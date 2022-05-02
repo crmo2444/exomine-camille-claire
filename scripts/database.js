@@ -29,4 +29,8 @@ export const purchaseMineral = () => {
         // application can re-render and update state
         document.dispatchEvent( new CustomEvent("stateChanged") )
     }
+
+
+export const getGovernors = () => {
+    return database.governors.map(governor => ({...governor}))
 }
