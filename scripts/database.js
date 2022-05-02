@@ -76,7 +76,7 @@ const database = {
         { id: 18, facilityId: 5, mineralId: 2, quantity: 7 },
         { id: 19, facilityId: 5, mineralId: 3, quantity: 0 },
         { id: 20, facilityId: 5, mineralId: 4, quantity: 0 },
-    ]
+    ],
     transientState: {}
 }
 
