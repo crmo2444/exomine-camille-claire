@@ -11,6 +11,28 @@ const database = {
         { id: 9, name: "Jared Soto", status: "inactive", colonyId: 4 },
         { id: 10, name: "Jody Floyd", status: "active", colonyId: 5 }
     ],
+    colonies: [
+        {
+            id: 1,
+            name: "Earth"
+        },
+        {
+            id: 2,
+            name: "Mars"
+        },
+        {
+            id: 3,
+            name: "Venus"
+        },
+        {
+            id: 4,
+            name: "Jupiter"
+        },
+        {
+            id: 5,
+            name: "Saturn"
+        }
+    ],
     transientState: {}
 }
 
