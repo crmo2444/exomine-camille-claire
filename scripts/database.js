@@ -33,6 +33,13 @@ const database = {
             name: "Saturn"
         }
     ],
+    miningFacilities: [
+        { id: 1, name: "Lucent", status: "inactive" },
+        { id: 2, name: "Visage", status: "active" },
+        { id: 3, name: "Reverie", status: "active" },
+        { id: 4, name: "Lumina", status: "active" },
+        { id: 5, name: "Ark", status: "active" },
+    ],
     transientState: {}
 }
 
