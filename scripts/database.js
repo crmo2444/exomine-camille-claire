@@ -55,7 +55,7 @@ const database = {
         { id: 20, colonyId: 5, mineralId: 4, quantity: 0 },
     ],
     //shows stock quantity of minerals per facility
-    mineralsFacility: [
+    mineralFacilities: [
         { id: 1, facilityId: 1, mineralId: 1, quantity: 4 },
         { id: 2, facilityId: 1, mineralId: 2, quantity: 2 },
         { id: 3, facilityId: 1, mineralId: 3, quantity: 10 },
@@ -77,6 +77,7 @@ const database = {
         { id: 19, facilityId: 5, mineralId: 3, quantity: 0 },
         { id: 20, facilityId: 5, mineralId: 4, quantity: 0 },
     ],
+    governorOrder: {},
     transientState: {}
 }
 
@@ -85,8 +86,9 @@ export const setFacility = (facilityId) => {
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
-export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
+export const setGovernor = (id) => {
+    database.transientState.governorId = id
+    document.dispatchEvent( new CustomEvent("stateChanged"))
 }
 
 export const purchaseMineral = () => {
@@ -99,4 +101,28 @@ export const purchaseMineral = () => {
 
 export const getGovernors = () => {
     return database.governors.map(governor => ({...governor}))
+}
+
+export const getColonies = () => {
+    return database.colonies.map(colony => ({...colony}))
+}
+
+export const getMiningFacilities = () => {
+    return database.miningFacilities.map(miningFacility => ({...miningFacility}))
+}
+
+export const getMinerals = () => {
+    return database.minerals.map(mineral => ({...mineral}))
+}
+
+export const getColonyMinerals = () => {
+    return database.colonyMinerals.map(colonyMineral => ({...colonyMineral}))
+}
+
+export const getMineralFacilities = () => {
+    return database.mineralFacilities.map(mineralFacility => ({...mineralFacility}))
+}
+
+export const getGovernorOrder = () => {
+    return database.governorOrder.map(governorOrder => ({...governorOrder}))
 }
