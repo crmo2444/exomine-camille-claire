@@ -81,8 +81,8 @@ const database = {
     transientState: {}
 }
 
-export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
+export const setFacility = (id) => {
+    database.transientState.facilityId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
