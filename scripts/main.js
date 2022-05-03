@@ -1,4 +1,4 @@
-import { governorHTML } from "./Governor.js";
+import { Exomine } from "./Exomine.js"
 
 const parentHTMLElement = document.querySelector(".container")
-parentHTMLElement.innerHTML = governorHTML()
+parentHTMLElement.innerHTML = Exomine()
