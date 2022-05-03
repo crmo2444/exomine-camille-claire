@@ -1,15 +1,14 @@
-import { getGovernors } from "./database.js"
-import { colonyHTML } from "./colony.js"
+import { getGovernors, setGovernor } from "./database.js"
 
 const governors = getGovernors()
 
 
 export const governorHTML = () => {
     let html = `Choose a governor: `
-    html += '<select name="governor" value="${governor.id}">'
+    html += '<select name="governor">'
 
     const listGovernors = governors.map((governor) => {
-        return `<option>${governor.name}</option>`
+        return `<option value="${governor.id}">${governor.name}</option>`
     })
     html += listGovernors.join("")
     html += '</select>'
