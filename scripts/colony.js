@@ -7,7 +7,7 @@ let governors = getGovernors()
 
 export const colonyHTML = () => { 
     let html = ``
-    //console.log(transientState)
+
     return html
 }
 
