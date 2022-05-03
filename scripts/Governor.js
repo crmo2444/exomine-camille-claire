@@ -32,6 +32,9 @@ document.addEventListener(
             const foundColony = colonies.find((colony)=> {
                 return colony.id === foundGovernor.colonyId
             })
+            setColony(foundColony.name)
+            transientState = getTransientState()
+            console.log(transientState)
             // let newColony = foundColony.name
             // setColony(newColony)
         }
