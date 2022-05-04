@@ -31,28 +31,28 @@ const database = {
         { id: 3, name: "Sapphire" },
         { id: 4, name: "Quartz" },
     ],
-    //shows inventory quanitity of minerals per colony
+    //shows inventory quantity of minerals per colony
     colonyMinerals: [
-        { id: 1, colonyId: 1, mineralId: 1, quantity: 0 },
-        { id: 2, colonyId: 1, mineralId: 2, quantity: 0 },
-        { id: 3, colonyId: 1, mineralId: 3, quantity: 0 },
-        { id: 4, colonyId: 1, mineralId: 4, quantity: 0 },
-        { id: 5, colonyId: 2, mineralId: 1, quantity: 0 },
-        { id: 6, colonyId: 2, mineralId: 2, quantity: 0 },
-        { id: 7, colonyId: 2, mineralId: 3, quantity: 0 },
-        { id: 8, colonyId: 2, mineralId: 4, quantity: 0 },
-        { id: 9, colonyId: 3, mineralId: 1, quantity: 0 },
-        { id: 10, colonyId: 3, mineralId: 2, quantity: 0 },
-        { id: 11, colonyId: 3, mineralId: 3, quantity: 0 },
-        { id: 12, colonyId: 3, mineralId: 4, quantity: 0 },
-        { id: 13, colonyId: 4, mineralId: 1, quantity: 0 },
-        { id: 14, colonyId: 4, mineralId: 2, quantity: 0 },
-        { id: 15, colonyId: 4, mineralId: 3, quantity: 0 },
-        { id: 16, colonyId: 4, mineralId: 4, quantity: 0 },
-        { id: 17, colonyId: 5, mineralId: 1, quantity: 0 },
-        { id: 18, colonyId: 5, mineralId: 2, quantity: 0 },
-        { id: 19, colonyId: 5, mineralId: 3, quantity: 0 },
-        { id: 20, colonyId: 5, mineralId: 4, quantity: 0 },
+        { id: 1, colonyId: 1, mineralId: 1, quantity: 2 },
+        { id: 2, colonyId: 1, mineralId: 2, quantity: 3 },
+        { id: 3, colonyId: 1, mineralId: 3, quantity: 1 },
+        { id: 4, colonyId: 1, mineralId: 4, quantity: 8 },
+        { id: 5, colonyId: 2, mineralId: 1, quantity: 2 },
+        { id: 6, colonyId: 2, mineralId: 2, quantity: 7 },
+        { id: 7, colonyId: 2, mineralId: 3, quantity: 1 },
+        { id: 8, colonyId: 2, mineralId: 4, quantity: 7 },
+        { id: 9, colonyId: 3, mineralId: 1, quantity: 4 },
+        { id: 10, colonyId: 3, mineralId: 2, quantity: 1 },
+        { id: 11, colonyId: 3, mineralId: 3, quantity: 1 },
+        { id: 12, colonyId: 3, mineralId: 4, quantity: 4 },
+        { id: 13, colonyId: 4, mineralId: 1, quantity: 6 },
+        { id: 14, colonyId: 4, mineralId: 2, quantity: 7 },
+        { id: 15, colonyId: 4, mineralId: 3, quantity: 3 },
+        { id: 16, colonyId: 4, mineralId: 4, quantity: 5 },
+        { id: 17, colonyId: 5, mineralId: 1, quantity: 6 },
+        { id: 18, colonyId: 5, mineralId: 2, quantity: 6 },
+        { id: 19, colonyId: 5, mineralId: 3, quantity: 3 },
+        { id: 20, colonyId: 5, mineralId: 4, quantity: 4 },
     ],
     //shows stock quantity of minerals per facility
     mineralFacilities: [
@@ -93,6 +93,11 @@ export const setColony = (name) => {
 
 export const setGovernor = (id) => {
     database.transientState.governorId = id
+    document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setGovernorName = (name) => {
+    database.transientState.governorName = name
     document.dispatchEvent( new CustomEvent("stateChanged"))
 }
 
