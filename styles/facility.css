@@ -1,0 +1,32 @@
+.showfacility {
+    display: flex;
+    flex-direction: column;
+    border: 0.1rem dashed grey;
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    flex: 3;
+}
+
+.radiobutton {
+    list-style-type: none;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    border: 0.1rem dashed teal;
+    margin: 2rem;
+    padding: 2rem;
+    flex: 1;
+}
+
+.sidebyside {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header {
+    font-size: 2.5rem;
+}

@@ -10,6 +10,7 @@ import { purchaseFeature} from "./database.js"
 export const Exomine = () => {
     
     let html = `
+    <h1 class="header">Solar System Mining Marketplace</h1>
     <article class="top-container">
         <div class="dropdowns">
             <section class="governors">
@@ -29,14 +30,19 @@ export const Exomine = () => {
         </div>
     </article>
 
+    <article class="sidebyside">
+    <article class="showfacility">
         <section class="mining">
             ${miningHTML()}
         </section>
+        </article>
 
         <section class="order">
         <h3>Space Cart</h3>
-        <button id="orderButton">Purchase Mineral</button>
+        <br>
+        <button class="orderButton" id="orderButton">Purchase Mineral</button>
         </section>
+        </article>
     `
 
     return html
@@ -45,6 +51,7 @@ export const Exomine = () => {
 export const ExomineTwo = () => {
     
     let html = `
+    <h1 class="header">Solar System Mining Marketplace</h1>
     <article class="top-container">
         <div class="dropdowns">
             <section class="governors">
@@ -63,20 +70,24 @@ export const ExomineTwo = () => {
             </section>
         </div>
     </article>
-
+    
+    <article class="sidebyside">
+    <article class="showfacility"> 
                 <section class="mining">
                     ${miningHTML()}
                 </section>
-
+                
                 <section class="list">
-                    ${mineralsListHTML()}
+                ${mineralsListHTML()}
                 </section>
+                </article>
 
                 <section class="order">
                 <h3>Space Cart</h3>
                 ${spaceCart()}
-                <button id="orderButton">Purchase Mineral</button>
+                <button class="orderButton" id="orderButton">Purchase Mineral</button>
                 </section>
+                </article>
                 `
     return html
 }
