@@ -31,3 +31,23 @@ document.addEventListener(
         }
     }
 )
+
+export const facilityHTMLTwo = () => {
+    let state = getTransientState()
+    let html = `Choose a facility: `
+    html += `<select name="facility">`
+
+    for (let facility of facilities){
+        if (facility.id === state.facilityId)
+        {
+            html += `<option value="0">${facility.name}</option> `
+        }
+    }
+        
+    const listfacilities = facilities.map((facility) => {
+            return `<option value="${facility.id}" name="${facility.name}">${facility.name}</option>`
+    })
+    html += listfacilities.join("")
+    html += '</select>'
+        return html
+    }
