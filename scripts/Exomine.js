@@ -14,10 +14,10 @@ export const Exomine = () => {
     <article class="top-container">
         <div class="dropdowns">
             <section class="governors">
-                ${governorHTMLTwo()}
+                ${governorHTML()}
             </section>
             <section class="facilities">
-                ${facilityHTMLTwo()}
+                ${facilityHTML()}
             </section>
         </div>
         <div class="colony-stuff">
