@@ -5,7 +5,7 @@ import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
 import { mineralsListHTML, spaceCart } from "./facilityMineralsList.js"
 import { purchaseMineral } from "./database.js"
-import { purchaseFeature} from "./spaceCart.js"
+import { purchaseFeature} from "./database.js"
 
 
 export const Exomine = () => {

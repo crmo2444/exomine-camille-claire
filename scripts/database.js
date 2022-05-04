@@ -143,6 +143,24 @@ export const purchaseMineral = () => {
         document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
+export const purchaseFeature = () => {
+    let state = getTransientState()
+    console.log(state)
+    for (const mineralFacility of mineralFacilities) {
+        if (mineralFacility.facilityId === state.facilityId && mineralFacility.mineralId === state.mineralId) {
+            mineralFacility.quantity = mineralFacility.quantity - 1
+            console.log(mineralFacility.quantity)
+        }
+    }
+    for (const colonyMineral of colonyMinerals) {
+        if (colonyMineral.colonyId === state.colonyId && colonyMineral.mineralId === state.mineralId) {
+            colonyMineral.quantity = colonyMineral.quantity + 1
+            console.log(colonyMineral.quantity)
+        }
+    }
+}
+
+
 
 export const getGovernors = () => {
     return database.governors.map(governor => ({...governor}))
