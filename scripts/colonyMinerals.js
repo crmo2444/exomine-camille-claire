@@ -1,8 +1,5 @@
 import { getColonyMinerals, getMinerals, getColonies, getTransientState } from "./database.js";
 
-let colonyMinerals = getColonyMinerals()
-let colonies = getColonies()
-let minerals = getMinerals()
 
 export const colonyMineralsHTML = () => {
     let html = '<ul>'
@@ -11,6 +8,9 @@ export const colonyMineralsHTML = () => {
         html = ''
         return html
     } else {
+        let colonies = getColonies()
+        let minerals = getMinerals()
+        let colonyMinerals = getColonyMinerals()
         for (const colony of colonies) {
             if (transientState.colonyName === colony.name) {
                 for (const colonyMineral of colonyMinerals) {

@@ -8,7 +8,9 @@ export const facilityHTML = () => {
     let html = `Choose a facility: `
     html += '<select name="facility"> <option value="0">Choose one...</option>'
     const listFacilities = facilities.map((facility) => {
-        return `<option value="${facility.id}">${facility.name}</option>`
+        if (facility.status === "active") {
+            return `<option value="${facility.id}">${facility.name}</option>`
+        }
     })
     html += listFacilities.join("")
     html += '</select>'
@@ -22,7 +24,7 @@ document.addEventListener(
         if (event.target.name === "facility") {
             setFacility(parseInt(event.target.value))
             let transientState = getTransientState()
-            const foundFacility = facilities.find((facility)=> {
+            const foundFacility = facilities.find((facility) => {
                 return facility.id === transientState.facilityId
             })
             setFacilityName(foundFacility.name)
@@ -36,17 +38,16 @@ export const facilityHTMLTwo = () => {
     let html = `Choose a facility: `
     html += `<select name="facility">`
 
-    for (let facility of facilities){
-        if (facility.id === state.facilityId)
-        {
+    for (let facility of facilities) {
+        if (facility.id === state.facilityId) {
             html += `<option value="0">${facility.name}</option> `
         }
     }
-        
+
     const listfacilities = facilities.map((facility) => {
-            return `<option value="${facility.id}" name="${facility.name}">${facility.name}</option>`
+        return `<option value="${facility.id}" name="${facility.name}">${facility.name}</option>`
     })
     html += listfacilities.join("")
     html += '</select>'
-        return html
-    }
+    return html
+}

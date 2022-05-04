@@ -83,12 +83,12 @@ const database = {
 
 export const setFacility = (id) => {
     database.transientState.facilityId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setFacilityName = (name) => {
     database.transientState.facilityName = name
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setColony = (name) => {
@@ -103,59 +103,58 @@ export const setColonyId = (id) => {
 
 export const setGovernor = (id) => {
     database.transientState.governorId = id
-    document.dispatchEvent( new CustomEvent("stateChanged"))
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setMineralId = (id) => {
     database.transientState.mineralId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setMineralName = (name) => {
     database.transientState.mineralName = name
-    document.dispatchEvent( new CustomEvent("stateChanged"))
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const purchaseMineral = () => {
-        // Copy the current state of user choices
-        const newOrder = {...database.transientState}
-    
-        // Add a new primary key to the object
-        if (database.governorOrder.length === 0) {
-            newOrder.id = 1
-        }
-        else {
+    // Copy the current state of user choices
+    const newOrder = { ...database.transientState }
+
+    // Add a new primary key to the object
+    if (database.governorOrder.length === 0) {
+        newOrder.id = 1
+    }
+    else {
         const lastIndex = database.governorOrder.length - 1
         newOrder.id = database.governorOrder[lastIndex].id + 1
-        }
-    
-        // Add a timestamp to the order
-        newOrder.timestamp = Date.now()
-    
-        // Add the new order object to custom orders state
-        database.governorOrder.push(newOrder)
-    
-        // Reset the temporary state for user choices
-        database.transientState = {}
+    }
 
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
+    // Add a timestamp to the order
+    newOrder.timestamp = Date.now()
+
+    // Add the new order object to custom orders state
+    database.governorOrder.push(newOrder)
+
+    // Reset the temporary state for user choices
+    database.transientState = {}
+
+    // Broadcast custom event to entire documement so that the
+    // application can re-render and update state
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const purchaseFeature = () => {
     let state = getTransientState()
-    console.log(state)
+    let mineralFacilities = database.mineralFacilities
+    let colonyMinerals = database.colonyMinerals
     for (const mineralFacility of mineralFacilities) {
         if (mineralFacility.facilityId === state.facilityId && mineralFacility.mineralId === state.mineralId) {
             mineralFacility.quantity = mineralFacility.quantity - 1
-            console.log(mineralFacility.quantity)
         }
     }
     for (const colonyMineral of colonyMinerals) {
         if (colonyMineral.colonyId === state.colonyId && colonyMineral.mineralId === state.mineralId) {
             colonyMineral.quantity = colonyMineral.quantity + 1
-            console.log(colonyMineral.quantity)
         }
     }
 }
@@ -163,29 +162,29 @@ export const purchaseFeature = () => {
 
 
 export const getGovernors = () => {
-    return database.governors.map(governor => ({...governor}))
+    return database.governors.map(governor => ({ ...governor }))
 }
 
 export const getColonies = () => {
-    return database.colonies.map(colony => ({...colony}))
+    return database.colonies.map(colony => ({ ...colony }))
 }
 
 export const getMiningFacilities = () => {
-    return database.miningFacilities.map(miningFacility => ({...miningFacility}))
+    return database.miningFacilities.map(miningFacility => ({ ...miningFacility }))
 }
 
 export const getMinerals = () => {
-    return database.minerals.map(mineral => ({...mineral}))
+    return database.minerals.map(mineral => ({ ...mineral }))
 }
 
 export const getColonyMinerals = () => {
-    return database.colonyMinerals.map(colonyMineral => ({...colonyMineral}))
+    return database.colonyMinerals.map(colonyMineral => ({ ...colonyMineral }))
 }
 
 export const getMineralFacilities = () => {
-    return database.mineralFacilities.map(mineralFacility => ({...mineralFacility}))
+    return database.mineralFacilities.map(mineralFacility => ({ ...mineralFacility }))
 }
 
 export const getTransientState = () => {
-    return {...database.transientState}
+    return { ...database.transientState }
 }

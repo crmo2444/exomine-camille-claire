@@ -1,8 +1,5 @@
 import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setMineralId, setMineralName } from "./database.js";
 
-let miningFacilities = getMiningFacilities()
-let minerals = getMinerals()
-let mineralFacilities = getMineralFacilities()
 
 export const mineralsListHTML = () => {
     let html = '<ul>'
@@ -11,6 +8,9 @@ export const mineralsListHTML = () => {
         html = ''
         return html
     } else {
+        let mineralFacilities = getMineralFacilities()
+        let minerals = getMinerals()
+        let miningFacilities = getMiningFacilities()
         for (const miningFacility of miningFacilities) {
             if (transientState.facilityName === miningFacility.name) {
                 for (const mineralFacility of mineralFacilities) {
@@ -32,6 +32,7 @@ export const mineralsListHTML = () => {
 document.addEventListener(
     "change",
     (event) => {
+        let minerals = getMinerals()
         if (event.target.name === "mineralitem") {
             setMineralName(event.target.value)
             let state = getTransientState()
