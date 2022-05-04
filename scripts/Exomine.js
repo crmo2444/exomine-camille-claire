@@ -10,25 +10,28 @@ import { purchaseFeature} from "./database.js"
 export const Exomine = () => {
     
     let html = `
-        <h1 class="header">Solar System Mining Marketplace</h1>
-        <section class="governors">
-        ${governorHTML()}
-        </section>
+    <h1 class="header">Solar System Mining Marketplace</h1>
+    <article class="top-container">
+        <div class="dropdowns">
+            <section class="governors">
+                ${governorHTML()}
+            </section>
+            <section class="facilities">
+                ${facilityHTML()}
+            </section>
+        </div>
+        <div class="colony-stuff">
+            <section class="colonyresources">
+                ${colonyHTML()}
+            </section>
+            <section class="colonyminerals">
+                ${colonyMineralsHTML()}
+            </section>
+        </div>
+    </article>
 
-        <section class="colonyresources">
-            ${colonyHTML()}
-        </section>
-
-        <section class="colonyminerals">
-            ${colonyMineralsHTML()}
-        </section>
-
-        <section class="facilities">
-            ${facilityHTML()}
-        </section>
-        
-        <article class="sidebyside">
-        <article class="showfacility">
+    <article class="sidebyside">
+    <article class="showfacility">
         <section class="mining">
             ${miningHTML()}
         </section>
@@ -48,25 +51,28 @@ export const Exomine = () => {
 export const ExomineTwo = () => {
     
     let html = `
-                <h1 class="header">Solar System Mining Marketplace</h1>
-                <section class="governors">
-                    ${governorHTMLTwo()}
-                </section>
-                
-                <section class="colonyresources">
-                    ${colonyHTML()}
-                </section>
-
-                <section class="colonyminerals">
-                    ${colonyMineralsHTML()}
-                </section>
-
-                <section class="facilities">
+    <h1 class="header">Solar System Mining Marketplace</h1>
+    <article class="top-container">
+        <div class="dropdowns">
+            <section class="governors">
+                ${governorHTMLTwo()}
+            </section>
+            <section class="facilities">
                 ${facilityHTMLTwo()}
-                </section>
-                
-                <article class="sidebyside">
-                <article class="showfacility">    
+            </section>
+        </div>
+        <div class="colony-stuff">
+            <section class="colonyresources">
+                ${colonyHTML()}
+            </section>
+            <section class="colonyminerals">
+                ${colonyMineralsHTML()}
+            </section>
+        </div>
+    </article>
+    
+    <article class="sidebyside">
+    <article class="showfacility"> 
                 <section class="mining">
                     ${miningHTML()}
                 </section>

@@ -1,0 +1,27 @@
+.dropdowns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 10rem;
+    margin-top: 1rem;
+}
+
+.colony-stuff {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.top-container {
+    display: flex;
+}
+
+.mineral-list {
+    list-style-type: none;
+    text-align: center;
+}
+
+.colony-name {
+    font-size: 20pt;
+    font-weight: bold;
+}
