@@ -1,4 +1,4 @@
-import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setMineralName } from "./database.js";
+import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setMineralId, setMineralName } from "./database.js";
 
 let miningFacilities = getMiningFacilities()
 let minerals = getMinerals()
@@ -34,6 +34,11 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "mineralitem") {
             setMineralName(event.target.value)
+            let state = getTransientState()
+            const foundMineral = minerals.find((mineral) => {
+                return mineral.name === state.mineralName
+            })
+            setMineralId(foundMineral.id)
             spaceCart()
         }
     }

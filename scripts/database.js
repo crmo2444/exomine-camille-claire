@@ -96,9 +96,19 @@ export const setColony = (name) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const setColonyId = (id) => {
+    database.transientState.colonyId = id
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 export const setGovernor = (id) => {
     database.transientState.governorId = id
     document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setMineralId = (id) => {
+    database.transientState.mineralId = id
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const setMineralName = (name) => {

@@ -1,5 +1,5 @@
 import { colonyHTML } from "./colony.js"
-import { getGovernors, getTransientState, setGovernor, getColonies, setColony } from "./database.js"
+import { getGovernors, getTransientState, setGovernor, getColonies, setColony, setColonyId } from "./database.js"
 
 const governors = getGovernors()
 const colonies = getColonies()
@@ -36,6 +36,7 @@ document.addEventListener(
                 return colony.id === foundGovernor.colonyId
             })
             setColony(foundColony.name)
+            setColonyId(foundColony.id)
             transientState = getTransientState()
 
         }
