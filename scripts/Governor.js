@@ -1,5 +1,5 @@
 import { colonyHTML } from "./colony.js"
-import { getGovernors, getTransientState, setGovernor, getColonies, setColony } from "./database.js"
+import { getGovernors, getTransientState, setGovernor, getColonies, setColony, setGovernorName } from "./database.js"
 
 const governors = getGovernors()
 const colonies = getColonies()
@@ -23,7 +23,6 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "governor") {
             setGovernor(parseInt(event.target.value))
-            //window.alert(event.target.value)
             let transientState = getTransientState()
             //find governorObject
             const foundGovernor = governors.find((governor)=> {
@@ -35,8 +34,7 @@ document.addEventListener(
             })
             setColony(foundColony.name)
             transientState = getTransientState()
-            // let state = transientState
-            // colonyHTML(state)
+            
         }
     }
 )
