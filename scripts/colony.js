@@ -8,9 +8,9 @@ export const colonyHTML = () => {
     let html = ''
     let transientState = getTransientState()
     if (typeof transientState.colonyName === 'undefined') {
-        html += `<h2 name="mineralList">Colony Minerals</h2>`
+        html += `<div class="colony-name">Colony Minerals</div>`
     } else {
-        html += `<h2 name="mineralList">${transientState.colonyName} Minerals</h2>`
+        html += `<div class="colony-name">${transientState.colonyName} Minerals</div>`
     }
     return html
 }

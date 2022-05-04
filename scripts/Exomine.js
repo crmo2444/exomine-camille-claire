@@ -10,21 +10,24 @@ import { purchaseFeature} from "./database.js"
 export const Exomine = () => {
     
     let html = `
-        <section class="governors">
-        ${governorHTML()}
-        </section>
-
-        <section class="colonyresources">
-            ${colonyHTML()}
-        </section>
-
-        <section class="colonyminerals">
-            ${colonyMineralsHTML()}
-        </section>
-
-        <section class="facilities">
-            ${facilityHTML()}
-        </section>
+    <article class="top-container">
+        <div class="dropdowns">
+            <section class="governors">
+                ${governorHTMLTwo()}
+            </section>
+            <section class="facilities">
+                ${facilityHTMLTwo()}
+            </section>
+        </div>
+        <div class="colony-stuff">
+            <section class="colonyresources">
+                ${colonyHTML()}
+            </section>
+            <section class="colonyminerals">
+                ${colonyMineralsHTML()}
+            </section>
+        </div>
+    </article>
 
         <section class="mining">
             ${miningHTML()}
@@ -42,22 +45,25 @@ export const Exomine = () => {
 export const ExomineTwo = () => {
     
     let html = `
-                <section class="governors">
-                    ${governorHTMLTwo()}
-                </section>
-                
-                <section class="colonyresources">
-                    ${colonyHTML()}
-                </section>
+    <article class="top-container">
+        <div class="dropdowns">
+            <section class="governors">
+                ${governorHTMLTwo()}
+            </section>
+            <section class="facilities">
+                ${facilityHTMLTwo()}
+            </section>
+        </div>
+        <div class="colony-stuff">
+            <section class="colonyresources">
+                ${colonyHTML()}
+            </section>
+            <section class="colonyminerals">
+                ${colonyMineralsHTML()}
+            </section>
+        </div>
+    </article>
 
-                <section class="colonyminerals">
-                    ${colonyMineralsHTML()}
-                </section>
-
-                <section class="facilities">
-                    ${facilityHTMLTwo()}
-                </section>
-                
                 <section class="mining">
                     ${miningHTML()}
                 </section>
