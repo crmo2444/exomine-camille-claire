@@ -1,13 +1,17 @@
 import { getColonies, getGovernors, getColonyMinerals, getMinerals, getTransientState } from "./database.js"
 
 let colonies = getColonies()
-let transientState = getTransientState()
 let governors = getGovernors()
 
 
-export const colonyHTML = () => { 
-    let html = ``
-
+export const colonyHTML = (state) => { 
+    let html = ''
+    let transientState = getTransientState()
+    if (typeof transientState.colonyName === 'undefined') {
+        html += `Colony Minerals`
+    } else {
+        html += `${transientState.colonyName} Minerals`
+    }
     return html
 }
 
