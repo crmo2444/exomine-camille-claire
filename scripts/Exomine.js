@@ -3,6 +3,7 @@ import { colonyHTML } from "./colony.js"
 import { facilityHTML, facilityHTMLTwo } from "./facility.js"
 import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
+import { mineralsListHTML } from "./facilityMineralsList.js"
 
 export const Exomine = () => {
     
@@ -52,6 +53,10 @@ export const ExomineTwo = () => {
                 
                 <section class="mining">
                     ${miningHTML()}
+                </section>
+
+                <section class="list">
+                    ${mineralsListHTML()}
                 </section>
                 `
     return html

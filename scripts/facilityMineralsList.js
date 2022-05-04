@@ -1,8 +1,8 @@
-import { getColonyMinerals, getMinerals, getMiningFacilities, getTransientState } from "./database.js";
+import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState } from "./database.js";
 
-let colonyMinerals = getColonyMinerals()
 let miningFacilities = getMiningFacilities()
 let minerals = getMinerals()
+let mineralFacilities = getMineralFacilities()
 
 export const mineralsListHTML = () => {
     let html = '<ul>'
@@ -13,10 +13,12 @@ export const mineralsListHTML = () => {
     } else {
         for (const miningFacility of miningFacilities) {
             if (transientState.facilityName === miningFacility.name) {
-                for (const colonyMineral of colonyMinerals) {
+                for (const mineralFacility of mineralFacilities) {
                     for (const mineral of minerals) {
-                        if (colonyMineral.colonyId === colony.id && mineralFacility.mineralId === mineral.id) {
-                            html += `<li><input type="radio" name="mineralitem"/>${mineralFacility.quantity} tons of ${mineral.name}</li>`
+                        if (mineralFacility.facilityId === miningFacility.id && mineralFacility.mineralId === mineral.id) {
+                            if (mineralFacility.quantity !== 0) {
+                                html += `<li class="radiobutton"><input type="radio" name="mineralitem"/>${mineralFacility.quantity} tons of ${mineral.name}</li>`
+                            }
                         }
                     }
                 }
