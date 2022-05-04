@@ -1,4 +1,4 @@
-import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState } from "./database.js";
+import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setMineralName } from "./database.js";
 
 let miningFacilities = getMiningFacilities()
 let minerals = getMinerals()
@@ -17,7 +17,7 @@ export const mineralsListHTML = () => {
                     for (const mineral of minerals) {
                         if (mineralFacility.facilityId === miningFacility.id && mineralFacility.mineralId === mineral.id) {
                             if (mineralFacility.quantity !== 0) {
-                                html += `<li class="radiobutton"><input type="radio" name="mineralitem"/>${mineralFacility.quantity} tons of ${mineral.name}</li>`
+                                html += `<li class="radiobutton"><input type="radio" name="mineralitem" value="${mineral.name}"/>${mineralFacility.quantity} tons of ${mineral.name}</li>`
                             }
                         }
                     }
@@ -27,4 +27,28 @@ export const mineralsListHTML = () => {
             }
         }
     }
+}
+
+document.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.name === "mineralitem") {
+            setMineralName(event.target.value)
+            spaceCart()
+        }
+    }
+    
+)
+
+export const spaceCart = () => {
+    
+    let state = getTransientState()
+    let html = ""
+
+    if (typeof state.mineralName !== 'undefined') {
+
+        html += `1 ton of ${state.mineralName} from ${state.facilityName}`
+    }
+    
+    return html
 }
