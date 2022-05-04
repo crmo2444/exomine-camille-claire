@@ -3,7 +3,8 @@ import { colonyHTML } from "./colony.js"
 import { facilityHTML, facilityHTMLTwo } from "./facility.js"
 import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
-import { mineralsListHTML } from "./facilityMineralsList.js"
+import { mineralsListHTML, spaceCart } from "./facilityMineralsList.js"
+
 
 export const Exomine = () => {
     
@@ -26,6 +27,11 @@ export const Exomine = () => {
 
         <section class="mining">
             ${miningHTML()}
+        </section>
+
+        <section class="order">
+        <h3>Space Cart</h3>
+        <button id="orderButton">Purchase Mineral</button>
         </section>
     `
 
@@ -57,6 +63,12 @@ export const ExomineTwo = () => {
 
                 <section class="list">
                     ${mineralsListHTML()}
+                </section>
+
+                <section class="order">
+                <h3>Space Cart</h3>
+                ${spaceCart()}
+                <button id="orderButton">Purchase Mineral</button>
                 </section>
                 `
     return html
