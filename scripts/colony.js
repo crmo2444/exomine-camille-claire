@@ -15,26 +15,6 @@ export const colonyHTML = () => {
     return html
 }
 
-// document.addEventListener(
-//     "change",
-//     (event) => {
-//         if (event.target.name === "mineralList") {
-//             setGovernor(parseInt(event.target.value))
-//             let transientState = getTransientState()
-//             //find governorObject
-//             const foundGovernor = governors.find((governor)=> {
-//                 return governor.id === transientState.governorId
-//             })
-//             find the colony whose pk matches governor fk
-//             const foundColony = colonies.find((colony)=> {
-//                 return colony.id === foundGovernor.colonyId
-//             })
-//             setColony(foundColony.name)
-//             transientState = getTransientState()
-            
-//         }
-//     }
-// )
 
 
 

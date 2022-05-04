@@ -1,4 +1,4 @@
-import { getMiningFacilities, setFacility } from "./database.js"
+import { getMiningFacilities, setFacility, getTransientState, setFacilityName } from "./database.js"
 
 
 const facilities = getMiningFacilities()
@@ -22,6 +22,12 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "facility") {
             setFacility(parseInt(event.target.value))
+            let transientState = getTransientState()
+            const foundFacility = facilities.find((facility)=> {
+                return facility.id === transientState.facilityId
+            })
+            setFacilityName(foundFacility.name)
+            transientState = getTransientState()
         }
     }
 )
