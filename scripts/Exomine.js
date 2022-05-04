@@ -4,7 +4,6 @@ import { facilityHTML, facilityHTMLTwo } from "./facility.js"
 import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
 import { mineralsListHTML, spaceCart } from "./facilityMineralsList.js"
-import { purchaseMineral } from "./database.js"
 import { purchaseFeature} from "./database.js"
 
 
@@ -82,7 +81,9 @@ document.addEventListener(
         const itemClicked = clickEvent.target
         if (itemClicked.id === "orderButton") {
             purchaseFeature()
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 
 )
+
