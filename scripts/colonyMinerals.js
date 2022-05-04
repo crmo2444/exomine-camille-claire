@@ -16,7 +16,9 @@ export const colonyMineralsHTML = () => {
                 for (const colonyMineral of colonyMinerals) {
                     for (const mineral of minerals) {
                         if (colonyMineral.colonyId === colony.id && colonyMineral.mineralId === mineral.id) {
-                            html += `<li>${colonyMineral.quantity} tons of ${mineral.name}</li>`
+                            if(colonyMineral.quantity !== 0) {
+                                html += `<li>${colonyMineral.quantity} tons of ${mineral.name}</li>`
+                            }
                         }
                     }
                 }
