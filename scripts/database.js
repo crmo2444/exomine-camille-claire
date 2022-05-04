@@ -96,9 +96,19 @@ export const setColony = (name) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
+export const setColonyId = (id) => {
+    database.transientState.colonyId = id
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 export const setGovernor = (id) => {
     database.transientState.governorId = id
     document.dispatchEvent( new CustomEvent("stateChanged"))
+}
+
+export const setMineralId = (id) => {
+    database.transientState.mineralId = id
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const setMineralName = (name) => {
@@ -132,6 +142,24 @@ export const purchaseMineral = () => {
         // application can re-render and update state
         document.dispatchEvent( new CustomEvent("stateChanged") )
 }
+
+export const purchaseFeature = () => {
+    let state = getTransientState()
+    console.log(state)
+    for (const mineralFacility of mineralFacilities) {
+        if (mineralFacility.facilityId === state.facilityId && mineralFacility.mineralId === state.mineralId) {
+            mineralFacility.quantity = mineralFacility.quantity - 1
+            console.log(mineralFacility.quantity)
+        }
+    }
+    for (const colonyMineral of colonyMinerals) {
+        if (colonyMineral.colonyId === state.colonyId && colonyMineral.mineralId === state.mineralId) {
+            colonyMineral.quantity = colonyMineral.quantity + 1
+            console.log(colonyMineral.quantity)
+        }
+    }
+}
+
 
 
 export const getGovernors = () => {

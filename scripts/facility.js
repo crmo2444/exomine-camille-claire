@@ -6,8 +6,7 @@ const facilities = getMiningFacilities()
 
 export const facilityHTML = () => {
     let html = `Choose a facility: `
-    html += '<select name="facility">'
-
+    html += '<select name="facility"> <option value="0">Choose one...</option>'
     const listFacilities = facilities.map((facility) => {
         return `<option value="${facility.id}">${facility.name}</option>`
     })
