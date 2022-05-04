@@ -23,6 +23,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "governor") {
             setGovernor(parseInt(event.target.value))
+            //window.alert(event.target.value)
             let transientState = getTransientState()
             //find governorObject
             const foundGovernor = governors.find((governor)=> {
@@ -34,9 +35,8 @@ document.addEventListener(
             })
             setColony(foundColony.name)
             transientState = getTransientState()
-            console.log(transientState)
-            // let newColony = foundColony.name
-            // setColony(newColony)
+            // let state = transientState
+            // colonyHTML(state)
         }
     }
 )
