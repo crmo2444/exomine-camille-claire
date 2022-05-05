@@ -58,11 +58,10 @@ export const governorHTML = () => {
         html += listGovernors.join("")
 
     } else {
-        for (const governor of governors) {
-            if (governor.id === state.governorId) {
-                html += `<option value="0">${governor.name}</option> `
-            }
-        }
+        const foundGovernor = governors.find((governor) => {
+            return governor.id === state.governorId
+        })
+        html += `<option value="0">${foundGovernor.name}</option> `
         const listGovernors = governors.map((governor) => {
             if (governor.status === "active") {
                 return `<option value="${governor.id}">${governor.name}</option>`
