@@ -55,6 +55,6 @@ export const spaceCart = () => {
 
         html += `1 ton of ${state.mineralName} from ${state.facilityName}`
     }
-    
+
     return html
 }
