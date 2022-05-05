@@ -1,16 +1,13 @@
-import { Exomine, ExomineTwo } from "./Exomine.js"
+import { Exomine } from "./Exomine.js"
 
 const parentHTMLElement = document.querySelector(".container")
 
-
-parentHTMLElement.innerHTML = Exomine()
-
-
 const renderHTML = () => {
-    parentHTMLElement.innerHTML = ExomineTwo()
+    parentHTMLElement.innerHTML = Exomine()
 }
 
 document.addEventListener("stateChanged", event => {
     renderHTML()
 })
 
+renderHTML()
