@@ -1,30 +1,28 @@
 import { getColonyMinerals, getMinerals, getColonies, getTransientState } from "./database.js";
 
 
+
 export const colonyMineralsHTML = () => {
-    let html = '<ul>'
     let transientState = getTransientState()
     if (typeof transientState.colonyName === 'undefined') {
-        html = ''
-        return html
+        return ''
     } else {
         let colonies = getColonies()
         let minerals = getMinerals()
         let colonyMinerals = getColonyMinerals()
-        for (const colony of colonies) {
-            if (transientState.colonyName === colony.name) {
-                for (const colonyMineral of colonyMinerals) {
-                    for (const mineral of minerals) {
-                        if (colonyMineral.colonyId === colony.id && colonyMineral.mineralId === mineral.id) {
-                            if(colonyMineral.quantity !== 0) {
-                                html += `<li class="mineral-list">${colonyMineral.quantity} tons of ${mineral.name}</li>`
-                            }
-                        }
-                    }
-                }
-                html += '</ul>'
-                return html
+        const filterColonyMineral = colonyMinerals.filter(colonyMineral => colonyMineral.colonyId === transientState.colonyId)
+        return `
+        <ul>
+        ${filterColonyMineral.map(colonyMineralObj => {
+            if (colonyMineralObj.quantity !== 0) {
+                const foundMineral = minerals.find((mineral) => {
+                    return mineral.id === colonyMineralObj.mineralId
+                })
+                return `<li class="mineral-list">${colonyMineralObj.quantity} tons of ${foundMineral.name}</li>`
             }
-        }
+        }).join("")}
+        </ul>
+        `
     }
 }
+
