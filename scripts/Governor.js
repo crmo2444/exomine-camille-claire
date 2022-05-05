@@ -5,20 +5,20 @@ const governors = getGovernors()
 const colonies = getColonies()
 
 
-export const governorHTML = () => {
-    let html = `Choose a governor: `
-    html += `<select name="governor">
-    <option value="0">Choose one... </option> `
+// export const governorHTML = () => {
+//     let html = `Choose a governor: `
+//     html += `<select name="governor">
+//     <option value="0">Choose one... </option> `
 
-    const listGovernors = governors.map((governor) => {
-        if (governor.status === "active") {
-            return `<option value="${governor.id}">${governor.name}</option>`
-        }
-    })
-    html += listGovernors.join("")
-    html += '</select>'
-    return html
-}
+//     const listGovernors = governors.map((governor) => {
+//         if (governor.status === "active") {
+//             return `<option value="${governor.id}">${governor.name}</option>`
+//         }
+//     })
+//     html += listGovernors.join("")
+//     html += '</select>'
+//     return html
+// }
 
 
 
@@ -39,27 +39,37 @@ document.addEventListener(
             })
             setColony(foundColony.name)
             setColonyId(foundColony.id)
-            transientState = getTransientState()
-
         }
     }
 )
 
-export const governorHTMLTwo = () => {
+export const governorHTML = () => {
     let state = getTransientState()
     let html = `Choose a governor: `
     html += `<select name="governor">`
+    if (typeof state.colonyName === "undefined") {
+        html += `<option value="0">Choose one... </option> `
 
-    for (let governor of governors) {
-        if (governor.id === state.governorId) {
-            html += `<option value="0">${governor.name}</option> `
+        const listGovernors = governors.map((governor) => {
+            if (governor.status === "active") {
+                return `<option value="${governor.id}">${governor.name}</option>`
+            }
+        })
+        html += listGovernors.join("")
+
+    } else {
+        for (const governor of governors) {
+            if (governor.id === state.governorId) {
+                html += `<option value="0">${governor.name}</option> `
+            }
         }
+        const listGovernors = governors.map((governor) => {
+            if (governor.status === "active") {
+                return `<option value="${governor.id}">${governor.name}</option>`
+            }
+        })
+        html += listGovernors.join("")
     }
-
-    const listGovernors = governors.map((governor) => {
-        return `<option value="${governor.id}">${governor.name}</option>`
-    })
-    html += listGovernors.join("")
     html += '</select>'
     return html
 }

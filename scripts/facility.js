@@ -28,7 +28,6 @@ document.addEventListener(
                 return facility.id === transientState.facilityId
             })
             setFacilityName(foundFacility.name)
-            transientState = getTransientState()
         }
     }
 )
@@ -45,7 +44,9 @@ export const facilityHTMLTwo = () => {
     }
 
     const listfacilities = facilities.map((facility) => {
+        if (facility.status === "active") {
         return `<option value="${facility.id}" name="${facility.name}">${facility.name}</option>`
+        }
     })
     html += listfacilities.join("")
     html += '</select>'
