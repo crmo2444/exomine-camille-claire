@@ -34,16 +34,6 @@ export const Exomine = () => {
             <section class="facilities">
                 ${facilityHTML()}
             </section>
-        </div>
-        <div class="colony-stuff">
-            <section class="colonyresources">
-                ${colonyHTML()}
-            </section>
-            <section class="colonyminerals">
-                ${colonyMineralsHTML()}
-            </section>
-        </div>
-    </article>
     
             <article class="sidebyside">
             <article class="showfacility"> 
