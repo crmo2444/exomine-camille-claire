@@ -4,20 +4,6 @@ import { getMiningFacilities, setFacility, getTransientState, setFacilityName } 
 const facilities = getMiningFacilities()
 
 
-export const facilityHTML = () => {
-    let html = `Choose a facility: `
-    html += '<select name="facility"> <option value="0">Choose one...</option>'
-    const listFacilities = facilities.map((facility) => {
-        if (facility.status === "active") {
-            return `<option value="${facility.id}">${facility.name}</option>`
-        }
-    })
-    html += listFacilities.join("")
-    html += '</select>'
-    return html
-}
-
-
 document.addEventListener(
     "change",
     (event) => {
@@ -32,23 +18,37 @@ document.addEventListener(
     }
 )
 
-export const facilityHTMLTwo = () => {
+export const facilityHTML = () => {
     let state = getTransientState()
     let html = `Choose a facility: `
-    html += `<select name="facility">`
+    html += '<select name="facility">' 
+    
+    if (typeof state.colonyName === 'undefined') {
+        html += '<option value="0">Choose one...</option>'
 
-    for (let facility of facilities) {
-        if (facility.id === state.facilityId) {
-            html += `<option value="0">${facility.name}</option> `
+        const listFacilities = facilities.map((facility) => {
+            if (facility.status === "active") {
+                return `<option value="${facility.id}">${facility.name}</option>`
+            }
+        })
+        html += listFacilities.join("")
+    }
+    else {
+ 
+        for (let facility of facilities) {
+            if (facility.id === state.facilityId) {
+                html += `<option value="0">${facility.name}</option> `
+            }
         }
+        
+        const listFacilities = facilities.map((facility) => {
+            if (facility.status === "active") {
+                return `<option value="${facility.id}">${facility.name}</option>`
+            }
+        })
+        html += listFacilities.join("")
     }
 
-    const listfacilities = facilities.map((facility) => {
-        if (facility.status === "active") {
-        return `<option value="${facility.id}" name="${facility.name}">${facility.name}</option>`
-        }
-    })
-    html += listfacilities.join("")
     html += '</select>'
     return html
 }

@@ -1,6 +1,6 @@
 import { governorHTML } from "./Governor.js"
 import { colonyHTML } from "./colony.js"
-import { facilityHTML, facilityHTMLTwo } from "./facility.js"
+import { facilityHTML } from "./facility.js"
 import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
 import { mineralsListHTML, spaceCart } from "./facilityMineralsList.js"
@@ -58,7 +58,7 @@ export const ExomineTwo = () => {
                 ${governorHTML()}
             </section>
             <section class="facilities">
-                ${facilityHTMLTwo()}
+                ${facilityHTML()}
             </section>
         </div>
         <div class="colony-stuff">
