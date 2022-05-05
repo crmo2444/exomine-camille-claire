@@ -13,11 +13,24 @@ export const Exomine = () => {
         <h1 class="headerTitle">Solar System Mining Marketplace</h1>
         <img class="saturn" src="https://i.pinimg.com/originals/d2/86/37/d28637bbb44cf94c535ee17f1bcfa755.jpg">
     </header>
+    <section class="top">
     <article class="top-container">
         <div class="dropdowns">
             <section class="governors">
                 ${governorHTML()}
             </section>
+            </div>
+            <div class="colony-stuff">
+            <section class="colonyresources">
+            ${colonyHTML()}
+            </section>
+            <section class="colonyminerals">
+            ${colonyMineralsHTML()}
+            </section>
+            </div>
+            </article>
+    </section>
+            
             <section class="facilities">
                 ${facilityHTML()}
             </section>
@@ -32,9 +45,8 @@ export const Exomine = () => {
         </div>
     </article>
     
-    
-    <article class="sidebyside">
-    <article class="showfacility"> 
+            <article class="sidebyside">
+            <article class="showfacility"> 
                 <section class="mining">
                     ${miningHTML()}
                 </section>
@@ -45,7 +57,7 @@ export const Exomine = () => {
                 </article>
 
                 <section class="order">
-                <h3>Space Cart</h3>
+                <h3 class="cart">Space Cart</h3>
                 ${spaceCart()}
                 <button class="orderButton" id="orderButton">Purchase Mineral</button>
                 </section>

@@ -34,4 +34,6 @@ header {
 .saturn {
     width: 50rem;
     height: 7rem;
+.top {
+    margin-bottom: 5rem;
 }
