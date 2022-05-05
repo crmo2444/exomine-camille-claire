@@ -77,7 +77,6 @@ const database = {
         { id: 19, facilityId: 5, mineralId: 3, quantity: 0 },
         { id: 20, facilityId: 5, mineralId: 4, quantity: 0 },
     ],
-    governorOrder: {},
     transientState: {}
 }
 
@@ -116,32 +115,6 @@ export const setMineralName = (name) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const purchaseMineral = () => {
-    // Copy the current state of user choices
-    const newOrder = { ...database.transientState }
-
-    // Add a new primary key to the object
-    if (database.governorOrder.length === 0) {
-        newOrder.id = 1
-    }
-    else {
-        const lastIndex = database.governorOrder.length - 1
-        newOrder.id = database.governorOrder[lastIndex].id + 1
-    }
-
-    // Add a timestamp to the order
-    newOrder.timestamp = Date.now()
-
-    // Add the new order object to custom orders state
-    database.governorOrder.push(newOrder)
-
-    // Reset the temporary state for user choices
-    database.transientState = {}
-
-    // Broadcast custom event to entire documement so that the
-    // application can re-render and update state
-    document.dispatchEvent(new CustomEvent("stateChanged"))
-}
 
 export const purchaseFeature = () => {
     let state = getTransientState()

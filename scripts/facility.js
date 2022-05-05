@@ -14,7 +14,6 @@ document.addEventListener(
                 return facility.id === transientState.facilityId
             })
             setFacilityName(foundFacility.name)
-            transientState = getTransientState()
         }
     }
 )
