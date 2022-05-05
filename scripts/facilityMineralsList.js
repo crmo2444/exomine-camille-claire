@@ -8,24 +8,21 @@ export const mineralsListHTML = () => {
         html = ''
         return html
     } else {
-        let mineralFacilities = getMineralFacilities()
-        let minerals = getMinerals()
-        let miningFacilities = getMiningFacilities()
-        for (const miningFacility of miningFacilities) {
-            if (transientState.facilityName === miningFacility.name) {
-                for (const mineralFacility of mineralFacilities) {
-                    for (const mineral of minerals) {
-                        if (mineralFacility.facilityId === miningFacility.id && mineralFacility.mineralId === mineral.id) {
-                            if (mineralFacility.quantity !== 0) {
-                                html += `<li class="radiobutton"><input type="radio" name="mineralitem" value="${mineral.name}"/>${mineralFacility.quantity} tons of ${mineral.name}</li>`
-                            }
-                        }
-                    }
-                }
-                html += '</ul>'
-                return html
-            }
+    let mineralFacilities = getMineralFacilities()
+    let minerals = getMinerals()
+    const filterMineralFacilities = mineralFacilities.filter(mineralFacilities => mineralFacilities.facilityId === transientState.facilityId)
+    return `
+    <ul>
+    ${filterMineralFacilities.map(mineralFacilitiesObj => {
+        if (mineralFacilitiesObj.quantity !== 0) {
+            const foundMineral = minerals.find((mineral) => {
+                return mineral.id === mineralFacilitiesObj.mineralId
+            })
+            return `<li class="radiobutton"><input type="radio" name="mineralitem" value="${foundMineral.name}"/>${mineralFacilitiesObj.quantity} tons of ${foundMineral.name}</li>`
         }
+    }).join("")}
+    </ul>
+    `
     }
 }
 
@@ -55,6 +52,6 @@ export const spaceCart = () => {
 
         html += `1 ton of ${state.mineralName} from ${state.facilityName}`
     }
-
+    
     return html
 }
