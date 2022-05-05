@@ -1,4 +1,4 @@
-import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setMineralId, setMineralName } from "./database.js";
+import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setCustomOrderObj, setMineralId, setMineralName } from "./database.js";
 
 
 export const mineralsListHTML = () => {
@@ -46,12 +46,13 @@ document.addEventListener(
 export const spaceCart = () => {
     
     let state = getTransientState()
+    console.log(state)
     let html = ""
 
     if (typeof state.mineralName !== 'undefined') {
 
         html += `1 ton of ${state.mineralName} from ${state.facilityName}`
     }
-    
+
     return html
 }
