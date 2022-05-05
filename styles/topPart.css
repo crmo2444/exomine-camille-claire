@@ -25,3 +25,13 @@
     font-size: 20pt;
     font-weight: bold;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.saturn {
+    width: 50rem;
+    height: 7rem;
+}

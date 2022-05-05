@@ -9,7 +9,10 @@ import { purchaseFeature} from "./database.js"
 export const Exomine = () => {
     
     let html = `
-    <h1 class="header">Solar System Mining Marketplace</h1>
+    <header class="header">
+        <h1 class="headerTitle">Solar System Mining Marketplace</h1>
+        <img class="saturn" src="https://i.pinimg.com/originals/d2/86/37/d28637bbb44cf94c535ee17f1bcfa755.jpg">
+    </header>
     <article class="top-container">
         <div class="dropdowns">
             <section class="governors">
@@ -28,6 +31,7 @@ export const Exomine = () => {
             </section>
         </div>
     </article>
+    
     
     <article class="sidebyside">
     <article class="showfacility"> 
