@@ -57,31 +57,28 @@ export const mineralFacilityQuantities = (mineralId) => {
     let mineralFacilities = getMineralFacilities()
     let newObject = {}
     //if mineralId is chosen, mineralFacilities quantity with this mineralId - 1
-    for (let mineralFacility of mineralFacilities)
-        if (mineralFacility.mineralId === mineralId)
-        {
-            mineralFacility.quantity = mineralFacility.quantity - 1
-            newObject.quantity = mineralFacility.quantity
-            newObject.facilityId = mineralFacility.facilityId
-            newObject.mineralId = mineralFacility.mineralId
+    mineralFacilities.map(mineralFacilityObj => {
+        if (mineralFacilityObj.mineralId === mineralId) {
+            mineralFacilityObj.quantity = mineralFacilityObj.quantity - 1
+            newObject = {...mineralFacilityObj}
             newMineralFacilitiesArr.push(newObject)
         }
+    })
     return newMineralFacilitiesArr
 }
 
 export const mineralColonyQuantities = (mineralId, colonyId) => {
     let colonyMinerals = getColonyMinerals()
     let newObject = {}
-    //if mineralId is chosen, mineralFacilities quantity with this mineralId - 1
-    for (let colonyMineral of colonyMinerals)
-        if (colonyMineral.mineralId === mineralId && colonyMineral.colonyId === colonyId)
-        {
-            colonyMineral.quantity = colonyMineral.quantity + 1
-            newObject.quantity = colonyMineral.quantity
-            newObject.facilityId = colonyMineral.facilityId
-            newObject.mineralId = colonyMineral.mineralId
+    //if mineralId is chosen AND colonyId matches, mineralFacilities quantity with this mineralId + 1
+
+    colonyMinerals.map(colonyMineralObj => {
+        if (colonyMineralObj.mineralId === mineralId && colonyMineralObj.colonyId === colonyId) {
+            colonyMineralObj.quantity = colonyMineralObj.quantity + 1
+            newObject = {...colonyMineralObj}
             newMineralColoniesArr.push(newObject)
         }
+    })
     return newMineralColoniesArr
 }
 
@@ -92,19 +89,6 @@ export const spaceCart = (string) => {
     let html = string
     let chosenMinerals = [...state.chosenMinerals]
     let chosenFacilities = [...state.chosenFacilities]
-    
-
-    //let mineralList = state.chosenMinerals.forEach((object1) => {
-    //    let facilityList = state.chosenFacilities.forEach((object) => {
-     //       html += `<li>1 ton of ${object1} from ${object}</li>`
-     //   })
-   // })
-
-    //for (let chosenMineral of chosenMinerals) {
-     //   for (let chosenFacility of chosenFacilities) {
-    //        html += `<li>1 ton of ${chosenMineral} from ${chosenFacility}</li>`
-    //    }
-   // }
 
     for (let i = 0; i<chosenMinerals.length; i++) {
             html += `<li>1 ton of ${chosenMinerals[i]} from ${chosenFacilities[i]}</li>`
