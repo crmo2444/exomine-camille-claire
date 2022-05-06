@@ -121,46 +121,20 @@ export const purchaseFeature = () => {
     let newMineralFacilities = mineralFacilityQuantities()
     let newMineralColonies = mineralColonyQuantities()
 
-
-
-    // ${filterColonyMineral.map(colonyMineralObj => {
-    //     if (colonyMineralObj.quantity !== 0) {
-    //         const foundMineral = minerals.find((mineral) => {
-    //             return mineral.id === colonyMineralObj.mineralId
-    //         })
-    //         return `<li class="mineral-list">${colonyMineralObj.quantity} tons of ${foundMineral.name}</li>`
-    //     }
-
-
-    // for (let newMineralFacility of newMineralFacilities) {
-    //     for (let mineralFacility of mineralFacilities) {
-    //         if (newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId) {
-    //             mineralFacility.quantity = newMineralFacility.quantity
-    //         }
-    //     }
-    // }
-
     newMineralFacilities.map(newMineralFacility => {
-        mineralFacilities.find((mineralFacility) => {
+        let foundFacility = mineralFacilities.find((mineralFacility) => {
             return newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId
         })
-        mineralFacility.quantity = newMineralFacility.quantity
+        foundFacility.quantity = newMineralFacility.quantity
     })
 
     newMineralColonies.map(newMineralColony => {
-        colonyMinerals.find((colonyMineral) => {
-            return newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId
+        let foundMineral = colonyMinerals.find((colonyMineral) => {
+            return newMineralColony.colonyId === colonyMineral.colonyId && newMineralColony.mineralId === colonyMineral.mineralId
         })
-        colonyMineral.quantity = newMineralColony.quantity
+        foundMineral.quantity = newMineralColony.quantity
     })
 
-    // for (let newMineralColony of newMineralColonies) {
-    //     for (let colonyMineral of colonyMinerals) {
-    //         if (newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId) {
-    //             colonyMineral.quantity = newMineralColony.quantity
-    //         }
-    //     }
-    // }
     spaceCart("")
 }
 
