@@ -49,7 +49,7 @@ export const Exomine = () => {
                 <section class="order">
                 <h3 class="cart">Space Cart</h3>
                 <article id="reset">${spaceCart("")}</article>
-                <button class="orderButton" id="orderButton">Purchase Mineral</button>
+                <div class="center"><button class="orderButton" id="orderButton">Purchase Mineral</button></div>
                 </section>
                 </article>
                 `
