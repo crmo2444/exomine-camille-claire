@@ -65,7 +65,7 @@ const database = {
         { id: 5, facilityId: 5, mineralId: 1, quantity: 4 },
     ],
     //customOrder: [],
-    transientState: {chosenMinerals: new Set(), chosenFacilities: new Set()} //not just one mineral
+    transientState: { chosenMinerals: new Set(), chosenFacilities: new Set() } //not just one mineral
 }
 
 export const setFacility = (id) => {
@@ -121,21 +121,46 @@ export const purchaseFeature = () => {
     let newMineralFacilities = mineralFacilityQuantities()
     let newMineralColonies = mineralColonyQuantities()
 
-    for (let newMineralFacility of newMineralFacilities) {
-        for (let mineralFacility of mineralFacilities) {
-            if (newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId) {
-                mineralFacility.quantity = newMineralFacility.quantity
-            }
-        }
-    }
 
-    for (let newMineralColony of newMineralColonies) {
-        for (let colonyMineral of colonyMinerals) {
-            if (newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId) {
-                colonyMineral.quantity = newMineralColony.quantity
-            }
-        }
-    }
+
+    // ${filterColonyMineral.map(colonyMineralObj => {
+    //     if (colonyMineralObj.quantity !== 0) {
+    //         const foundMineral = minerals.find((mineral) => {
+    //             return mineral.id === colonyMineralObj.mineralId
+    //         })
+    //         return `<li class="mineral-list">${colonyMineralObj.quantity} tons of ${foundMineral.name}</li>`
+    //     }
+
+
+    // for (let newMineralFacility of newMineralFacilities) {
+    //     for (let mineralFacility of mineralFacilities) {
+    //         if (newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId) {
+    //             mineralFacility.quantity = newMineralFacility.quantity
+    //         }
+    //     }
+    // }
+
+    newMineralFacilities.map(newMineralFacility => {
+        mineralFacilities.find((mineralFacility) => {
+            return newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId
+        })
+        mineralFacility.quantity = newMineralFacility.quantity
+    })
+
+    newMineralColonies.map(newMineralColony => {
+        colonyMinerals.find((colonyMineral) => {
+            return newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId
+        })
+        colonyMineral.quantity = newMineralColony.quantity
+    })
+
+    // for (let newMineralColony of newMineralColonies) {
+    //     for (let colonyMineral of colonyMinerals) {
+    //         if (newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId) {
+    //             colonyMineral.quantity = newMineralColony.quantity
+    //         }
+    //     }
+    // }
     spaceCart("")
 }
 
