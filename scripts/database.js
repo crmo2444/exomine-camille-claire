@@ -1,3 +1,5 @@
+import { mineralColonyQuantities, mineralFacilityQuantities } from "./facilityMineralsList.js"
+
 const database = {
     governors: [
         { id: 1, name: "Bob Jones", status: "active", colonyId: 1 },
@@ -116,16 +118,22 @@ export const purchaseFeature = () => {
     let state = getTransientState()
     let mineralFacilities = database.mineralFacilities
     let colonyMinerals = database.colonyMinerals
+    let newMineralFacilities = mineralFacilityQuantities()
+    let newMineralColonies = mineralColonyQuantities()
 
-    for (const mineralFacility of mineralFacilities) {
-        if (mineralFacility.facilityId === state.facilityId && mineralFacility.mineralId === state.mineralId) {
-            mineralFacility.quantity = mineralFacility.quantity - 1
+    for (let newMineralFacility of newMineralFacilities) {
+        for (let mineralFacility of mineralFacilities) {
+            if (newMineralFacility.facilityId === mineralFacility.facilityId && newMineralFacility.mineralId === mineralFacility.mineralId) {
+                mineralFacility.quantity = newMineralFacility.quantity
+            }
         }
     }
 
-    for (const colonyMineral of colonyMinerals) {
-        if (colonyMineral.colonyId === state.colonyId && colonyMineral.mineralId === state.mineralId) {
-            colonyMineral.quantity = colonyMineral.quantity + 1
+    for (let newMineralColony of newMineralColonies) {
+        for (let colonyMineral of colonyMinerals) {
+            if (newMineralColony.facilityId === colonyMineral.facilityId && newMineralColony.mineralId === colonyMineral.mineralId) {
+                colonyMineral.quantity = newMineralColony.quantity
+            }
         }
     }
 }
