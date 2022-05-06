@@ -1,4 +1,4 @@
-import { mineralColonyQuantities, mineralFacilityQuantities } from "./facilityMineralsList.js"
+import { mineralColonyQuantities, mineralFacilityQuantities, spaceCart } from "./facilityMineralsList.js"
 
 const database = {
     governors: [
@@ -136,6 +136,7 @@ export const purchaseFeature = () => {
             }
         }
     }
+    spaceCart("")
 }
 
 

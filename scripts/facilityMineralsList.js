@@ -44,7 +44,7 @@ document.addEventListener(
             mineralFacilityQuantities(foundMineral.id)
             mineralColonyQuantities(foundMineral.id, state.colonyId)
             setFacilitySet(foundFacility.name)
-            spaceCart()
+            spaceCart("")
         }
     }
     
@@ -86,12 +86,13 @@ export const mineralColonyQuantities = (mineralId, colonyId) => {
 }
 
 
-export const spaceCart = () => {
+export const spaceCart = (string) => {
     
     let state = getTransientState()
-    let html = ""
+    let html = string
     let chosenMinerals = [...state.chosenMinerals]
     let chosenFacilities = [...state.chosenFacilities]
+    
 
     //let mineralList = state.chosenMinerals.forEach((object1) => {
     //    let facilityList = state.chosenFacilities.forEach((object) => {

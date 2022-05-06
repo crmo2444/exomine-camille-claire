@@ -4,10 +4,10 @@ import { facilityHTML } from "./facility.js"
 import { colonyMineralsHTML } from "./colonyMinerals.js"
 import { miningHTML } from "./facilityMinerals.js"
 import { mineralsListHTML, spaceCart } from "./facilityMineralsList.js"
-import { purchaseFeature} from "./database.js"
+import { purchaseFeature } from "./database.js"
 
 export const Exomine = () => {
-    
+
     let html = `
     <header class="header">
         <h1 class="headerTitle">Solar System Mining Marketplace</h1>
@@ -48,7 +48,7 @@ export const Exomine = () => {
 
                 <section class="order">
                 <h3 class="cart">Space Cart</h3>
-                ${spaceCart()}
+                <article id="reset">${spaceCart("")}</article>
                 <button class="orderButton" id="orderButton">Purchase Mineral</button>
                 </section>
                 </article>
@@ -63,8 +63,8 @@ document.addEventListener(
         if (itemClicked.id === "orderButton") {
             purchaseFeature()
             document.dispatchEvent(new CustomEvent("stateChanged"))
+            document.getElementById("reset").innerHTML=""
         }
     }
-
 )
 
