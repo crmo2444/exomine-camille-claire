@@ -78,7 +78,7 @@ const database = {
         { id: 20, facilityId: 5, mineralId: 4, quantity: 0 },
     ],
     //customOrder: [],
-    transientState: {chosenMinerals: new Set()} //not just one mineral
+    transientState: {chosenMinerals: new Set(), chosenFacilities: new Set()} //not just one mineral
 }
 
 export const setFacility = (id) => {
@@ -88,6 +88,10 @@ export const setFacility = (id) => {
 
 export const setFacilityName = (name) => {
     database.transientState.facilityName = name
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+export const setFacilitySet = (name) => {
+    database.transientState.chosenFacilities.add(name)
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -106,8 +110,8 @@ export const setGovernor = (id) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setMineralId = (id) => {
-    database.transientState.chosenMinerals.add(id)
+export const setMineralId = (name) => {
+    database.transientState.chosenMinerals.add(name)
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
