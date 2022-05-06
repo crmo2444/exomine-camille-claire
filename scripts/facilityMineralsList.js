@@ -1,5 +1,4 @@
-import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setCustomOrderObj, setMineralId, setMineralName } from "./database.js";
-
+import { getMineralFacilities, getMinerals, getMiningFacilities, getTransientState, setCustomOrderObj, setFacilitySet, setMineralId, setMineralName } from "./database.js";
 
 export const mineralsListHTML = () => {
     let html = '<ul>'
@@ -30,13 +29,19 @@ document.addEventListener(
     "change",
     (event) => {
         let minerals = getMinerals()
+        let facilities = getMiningFacilities()
+        
         if (event.target.name === "mineralitem") {
             setMineralName(event.target.value)
             let state = getTransientState()
             const foundMineral = minerals.find((mineral) => {
                 return mineral.name === state.mineralName
             })
-            setMineralId(foundMineral.id)
+            const foundFacility = facilities.find((facility) => {
+                return facility.id === state.facilityId
+            })
+            setMineralId(foundMineral.name)
+            setFacilitySet(foundFacility.name)
             spaceCart()
         }
     }
@@ -46,12 +51,19 @@ document.addEventListener(
 export const spaceCart = () => {
     
     let state = getTransientState()
-    console.log(state)
     let html = ""
+    let chosenMinerals = state.chosenMinerals
+    let chosenFacilities = state.chosenFacilities
+    //let mineralList = state.chosenMinerals.forEach((object1) => {
+    //    let facilityList = state.chosenFacilities.forEach((object) => {
+     //       html += `<li>1 ton of ${object1} from ${object}</li>`
+     //   })
+   // })
 
-    if (typeof state.mineralName !== 'undefined') {
-
-        html += `1 ton of ${state.mineralName} from ${state.facilityName}`
+    for (let chosenMineral of chosenMinerals) {
+        for (let chosenFacility of chosenFacilities) {
+            html += `<li>1 ton of ${chosenMineral} from ${chosenFacility}</li>`
+        }
     }
 
     return html
