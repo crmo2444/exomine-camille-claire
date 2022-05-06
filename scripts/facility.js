@@ -23,7 +23,11 @@ export const facilityHTML = () => {
     let html = `Choose a facility: `
     html += '<select name="facility">'
 
-    if (typeof state.facilityName === 'undefined') {
+    if (typeof state.governorId === "undefined") {
+        html += '<option value="0">Please pick a governor...</option>'
+    }
+
+    else if (typeof state.facilityName === 'undefined') {
         html += '<option value="0">Choose one...</option>'
 
         const listFacilities = facilities.map((facility) => {
