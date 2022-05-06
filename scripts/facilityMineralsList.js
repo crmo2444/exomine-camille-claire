@@ -52,19 +52,24 @@ export const spaceCart = () => {
     
     let state = getTransientState()
     let html = ""
-    let chosenMinerals = state.chosenMinerals
-    let chosenFacilities = state.chosenFacilities
+    let chosenMinerals = [...state.chosenMinerals]
+    let chosenFacilities = [...state.chosenFacilities]
+
     //let mineralList = state.chosenMinerals.forEach((object1) => {
     //    let facilityList = state.chosenFacilities.forEach((object) => {
      //       html += `<li>1 ton of ${object1} from ${object}</li>`
      //   })
    // })
 
-    for (let chosenMineral of chosenMinerals) {
-        for (let chosenFacility of chosenFacilities) {
-            html += `<li>1 ton of ${chosenMineral} from ${chosenFacility}</li>`
-        }
-    }
+    //for (let chosenMineral of chosenMinerals) {
+     //   for (let chosenFacility of chosenFacilities) {
+    //        html += `<li>1 ton of ${chosenMineral} from ${chosenFacility}</li>`
+    //    }
+   // }
 
+    for (let i = 0; i<chosenMinerals.length; i++) {
+            html += `<li>1 ton of ${chosenMinerals[i]} from ${chosenFacilities[i]}</li>`
+    }
+    
     return html
 }

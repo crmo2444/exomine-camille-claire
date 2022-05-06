@@ -57,25 +57,10 @@ const database = {
     //shows stock quantity of minerals per facility
     mineralFacilities: [
         { id: 1, facilityId: 1, mineralId: 1, quantity: 4 },
-        { id: 2, facilityId: 1, mineralId: 2, quantity: 2 },
-        { id: 3, facilityId: 1, mineralId: 3, quantity: 10 },
-        { id: 4, facilityId: 1, mineralId: 4, quantity: 6 },
-        { id: 5, facilityId: 2, mineralId: 1, quantity: 0 },
-        { id: 6, facilityId: 2, mineralId: 2, quantity: 11 },
-        { id: 7, facilityId: 2, mineralId: 3, quantity: 3 },
-        { id: 8, facilityId: 2, mineralId: 4, quantity: 9 },
-        { id: 9, facilityId: 3, mineralId: 1, quantity: 8 },
-        { id: 10, facilityId: 3, mineralId: 2, quantity: 0 },
-        { id: 11, facilityId: 3, mineralId: 3, quantity: 1 },
-        { id: 12, facilityId: 3, mineralId: 4, quantity: 4 },
-        { id: 13, facilityId: 4, mineralId: 1, quantity: 6 },
-        { id: 14, facilityId: 4, mineralId: 2, quantity: 5 },
-        { id: 15, facilityId: 4, mineralId: 3, quantity: 12 },
-        { id: 16, facilityId: 4, mineralId: 4, quantity: 1 },
-        { id: 17, facilityId: 5, mineralId: 1, quantity: 4 },
-        { id: 18, facilityId: 5, mineralId: 2, quantity: 7 },
-        { id: 19, facilityId: 5, mineralId: 3, quantity: 0 },
-        { id: 20, facilityId: 5, mineralId: 4, quantity: 0 },
+        { id: 2, facilityId: 2, mineralId: 2, quantity: 11 },
+        { id: 3, facilityId: 3, mineralId: 3, quantity: 7 },
+        { id: 4, facilityId: 4, mineralId: 4, quantity: 5 },
+        { id: 5, facilityId: 5, mineralId: 1, quantity: 4 },
     ],
     //customOrder: [],
     transientState: {chosenMinerals: new Set(), chosenFacilities: new Set()} //not just one mineral
@@ -110,13 +95,14 @@ export const setGovernor = (id) => {
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const setMineralId = (name) => {
-    database.transientState.chosenMinerals.add(name)
+export const setMineralId = (id) => {
+    database.transientState.mineralId = id
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setMineralName = (name) => {
     database.transientState.mineralName = name
+    database.transientState.chosenMinerals.add(name)
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
@@ -130,11 +116,13 @@ export const purchaseFeature = () => {
     let state = getTransientState()
     let mineralFacilities = database.mineralFacilities
     let colonyMinerals = database.colonyMinerals
+
     for (const mineralFacility of mineralFacilities) {
         if (mineralFacility.facilityId === state.facilityId && mineralFacility.mineralId === state.mineralId) {
             mineralFacility.quantity = mineralFacility.quantity - 1
         }
     }
+
     for (const colonyMineral of colonyMinerals) {
         if (colonyMineral.colonyId === state.colonyId && colonyMineral.mineralId === state.mineralId) {
             colonyMineral.quantity = colonyMineral.quantity + 1
