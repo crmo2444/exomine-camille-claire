@@ -136,6 +136,8 @@ export const purchaseFeature = () => {
     })
 
     spaceCart("")
+    state.chosenMinerals.clear()
+    state.chosenFacilities.clear()
 }
 
 

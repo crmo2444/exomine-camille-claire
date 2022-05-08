@@ -93,6 +93,5 @@ export const spaceCart = (string) => {
     for (let i = 0; i<chosenMinerals.length; i++) {
             html += `<li>1 ton of ${chosenMinerals[i]} from ${chosenFacilities[i]}</li>`
     }
-    
     return html
 }
