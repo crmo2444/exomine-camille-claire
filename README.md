@@ -25,7 +25,7 @@ git clone git@github.com:crmo2444/exomine-camille-claire.git
 
 2. Type in the following to navigate to the project directory:
 ```sh
-cd ~/exomine-camille-claire
+cd exomine-camille-claire
 ```
 
 3. Type the following to start your web server:
