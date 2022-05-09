@@ -1,60 +1,37 @@
 # Exomine
 
-This project has you building an application that lets governors of different colonies in our Solar System purchase minerals from various mining facilities that human have established.
-
-## Learning Objectives
-
-Completing the project is not your objective. Your focus is to building the following skills and deepen your knowledge of the concepts.
-
-1. Collaboration (are you helping your team succeed)
-1. Productivity (are you wasting too much time before asking for help)
-1. Data types
-1. Data structures
-1. Navigating data relationships using primary keys and foreign keys
-
-Quote from previous student...
-
-> "This project has made me realize the importance of an ERD and quality design of your data structure and how to access that data."
-
-## Wireframe
-
-This is the general layout provided by your product owner. Please follow this guideline for your project's layout.
-
-![wireframe for project](./images/wireframe.png)
+Exomine is an application that lets governors of different colonies in our Solar System purchase minerals from various mining facilities that humans have established.
 
 
-## Workflow Animation
+## ERD
 
-This animation shows you the basic behavior of the application.
+![erd for project](./images/exomineerd.png)
 
-![](./images/exomine.gif)
+## Working Preview
 
-## Data Relationships
+![gif of project](./images/exominevid.gif)
 
-Below you can ready some basic information about the properties and relationships of the data you need for this application. 
 
-## Governors
+## How To Get Started
+Start by choosing one of the active governors in the Choose Governor dropdown. Next, choose one of the active facilities and start buying minerals!
+Resources are a hot commodity, only 1 ton of any type of mineral can be purchased at a time. However, you can purchase many types of minerals at once. 
+Add these minerals to your cart, purchase them, and watch your inventory magically update!
 
-Each human habitation colony in the Solar System _(Earth, Mars, Europa, etc...)_ has a governor. To keep each colony running efficiently, the governor has to purchase essential minerals from lightly staffed mining facilities that have been established on asteroids, moons, and rocky planets.
+## How To Clone Our Project
+1. Open your terminal, cd to your workspace, type in the following, and press Enter:
+```sh
+git clone git@github.com:camillefaulkner/exomine-camille-claire.git
+```
 
-From time to time, governors take leaves of absence, so their status can change from active to inactive. Only active governors should be displayed in the UI.
+2. Navigate to the project directory:
+```sh
+cd ~/workspace/exomine-camille-claire
+```
 
-## Colonies
+3. Run the `serve` command to start the web server.
 
-Each colony can have one, or more, active governor depending on the size of the colony. For example, Earth could support up to five governors that are responsible for different regions of the planet.
+4. Open the URL provided by `serve` in your browser.
 
-## Mining Facilities
 
-Each mining facility can be active or inactive depending on the changes of staffing from the various companies that operate the facilities. Each object representation should record the name of the facility and its active status.
-
-If a mining facility is inactive, then the button in the UI should never be enabled, even after a governor is chosen.
-
-## Minerals
-
-Each mining facility can produce several kinds of minerals. Each mineral type can be produced at several mining facilities.
-
-# Stretch Goal
-
-**Do not attempt the stretch goal until you have completed the basic requirements above.**
-
-If your team would like to do more advanced state manipulations, refactor your code to allow a governor to select minerals from multiple mining facilities before finalizing the purchase. A working example done by a previous team can be seen at [https://solar-mine.onrender.com/](https://solar-mine.onrender.com/). 
+## Who Maintains And Contributes To This Project
+This project was brought to life and is maintained by Claire Morgan-Sanders and Camille Faulkner, Cohort 56 :blue_heart:
